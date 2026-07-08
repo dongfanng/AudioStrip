@@ -31,9 +31,8 @@ export async function loadFFmpeg(onLog) {
     ffmpeg.on('log', ({ message }) => onLog(message));
   }
 
-  // 使用 ESM 版本：module worker 中 importScripts 不可用，
-  // worker 内部会通过 import() 加载 core，ESM 版本有 export default
-  const baseURL = '/ffmpeg/esm';
+  // 从 CDN 加载 ffmpeg core（避免本地 32MB 文件超出 Cloudflare Pages 25MB 限制）
+  const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
   await ffmpeg.load({
     classWorkerURL: workerUrl,
     coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
