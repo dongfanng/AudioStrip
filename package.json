@@ -1,0 +1,20 @@
+{
+  "name": "audio-strip",
+  "version": "1.0.0",
+  "description": "浏览器端视频音频提取工具",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "node scripts/copy-core.mjs"
+  },
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1"
+  },
+  "devDependencies": {
+    "@ffmpeg/core": "^0.12.6",
+    "vite": "^5.4.0"
+  }
+}
